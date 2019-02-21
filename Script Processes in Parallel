@@ -1,9 +1,12 @@
 #!/bin/bash 
+#this script is to use wget to Parallel downloading from the txts.
 
+#define directory
 scripts_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 base_dir="$(dirname "$scripts_dir")"
 raw_data_dir="$scripts_dir/image"
 
+#define all the txts that include the downloading urls like 1.txt 2.txt 3.txt 4.txt 5.txt 
 declare -a class_names=(
 "1"
 "2"
@@ -16,7 +19,9 @@ Njob=${#class_names[@]} #任务总数
 
 echo "任务总数为$Njob"
 
-Nproc=2 #最大并发进程数  
+Nproc=2 #最大并发进程数, 
+
+echo "最大并发进程数$Nproc"
 
 function PushQue {      #将PID值追加到队列中 
 
@@ -64,6 +69,8 @@ function ChkQue {       #检查队列信息，如果有已经结束了的进程�
 
 for ((i=0; i<$Njob; i++)); do 
 
+
+#your code begins here.
 	urls_file="$scripts_dir/${class_names[i]}.txt"
 	images_dir="$raw_data_dir/${class_names[i]}"
 	mkdir -p "$images_dir"
@@ -71,7 +78,7 @@ for ((i=0; i<$Njob; i++)); do
 	echo "Downloading ..."
 	date
 	wget -nc -q --timeout=5 --tries=2 -i "$urls_file" -P "$images_dir" &
-   		   
+#your code ends here. Don't forget & at last row.
 
            PID=$! 
 
