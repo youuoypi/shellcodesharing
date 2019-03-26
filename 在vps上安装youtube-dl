@@ -1,0 +1,33 @@
+youtube-dl是网上开发的专门用于下载Youtube视频的软件，但它真正牛逼的地方在于还支持其它视频网站的下载，包括爱情动作片们，其中pornhub，xvideo等赫然在列，甚至还有国内的优酷网、B站等。
+
+
+以下是安装方法，使用的系统是debian，若因为时间间隔太久，该方法失效，则可以直接参考软件作者写的最新方法(https://rg3.github.io/youtube-dl/download.html)，作者用的是sudo，我是直接在root下安装的，等我什么时候弄懂了怎么开sudo再写篇文吧。
+
+我没装curl，所以用的是wget。若wget没装，可以先装wget:
+apt-get update
+apt-get install wget -y
+
+接下来是安装youtube-dl两行代码:
+# wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
+# chmod a+rx /usr/local/bin/youtube-dl
+
+安装完后就可以开始直接使用了。
+
+首先因为youtube-dl会下载到当前的目录，所以需要确保当前的目录是哪边，一般如果是root登录的话，目录就是/root，如果不想下载到root目录下，可以用mkdir新建一个目录，比如如下代码会新建一个叫Test的目录:
+mkdir Test
+
+然后使用cd命令进入到该目录下：
+cd ./Test
+这就进入到root下面新建的Test目录里。可以使用点号.来代替当前所在的目录地址，这样目录地址就不用打全了。下面这段代码的结果和上面是一样的，点号.取代了/root目录：
+cd /root/Test
+
+若要回到上层目录可以使用如下代码:
+cd --
+
+进入到Test目录里后就可以使用youtube-dl下载视频了
+语法: youtube-dl 视频网址
+代码: youtube-dl http://...
+
+youtube-dl会自动下载最佳的视频格式。
+
+若不想现在最佳格式，也可以用以下代码查看可供下载的格式：
