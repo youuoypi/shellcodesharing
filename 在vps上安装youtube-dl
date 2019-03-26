@@ -31,3 +31,23 @@ cd --
 youtube-dl会自动下载最佳的视频格式。
 
 若不想现在最佳格式，也可以用以下代码查看可供下载的格式：
+
+
+youtube-dl -F https://www.youtube.com/watch?v=lW9Uudkx42g
+
+1
+2
+youtube-dl -F https://www.youtube.com/watch?v=lW9Uudkx42g
+ 
+然后选中想下载的格式，比如想下载138：
+
+
+youtube-dl -f 138 https://www.youtube.com/watch?v=lW9Uudkx42g
+
+1
+2
+youtube-dl -f 138 https://www.youtube.com/watch?v=lW9Uudkx42g
+ 
+以上就是youtube-dl的简单操作，该操作的局限在于不能离线，也就是说如果SSH终端不小心被关掉，或者甚至网络连接不稳定导致SSH链接断掉，则下载自动终止。
+
+在接下来的文章中会讲到如何能进行批量下载及离线下载。
